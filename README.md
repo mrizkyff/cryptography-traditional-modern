@@ -1,4 +1,4 @@
-# cryptography-caesar-vigenere-transposition-hill-cipher-playFair-superEncription
+KRIPTOGRAFI/CRYPTOGRAPHY
 Cryptography with several traditional algorithm, 
 
 This Repository Contains :
@@ -13,3 +13,8 @@ This Repository Contains :
 5. Substitution Cipher
     - Caesar Cipher (Fixed)
     - Vigenere Cipher
+
+plainText used "MUHAMADRIZKYFAJARFEBRIAN^-^Ditambahin_bEn_tAMBAh_PanjanG_daN_AngelFC-77-74-B3-34-DB114.125.9.97"
+means [FULL NAME]+[DUMMY SYMBOL CHARACTER]
+
+key variated every algorithm
