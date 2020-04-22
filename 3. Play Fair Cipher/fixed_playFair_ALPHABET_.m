@@ -54,7 +54,8 @@ for x=1:ordo
 end
 char(matrix_kunci)
 %% menghilangkan j dari plaintext
-plaintext = 'GOODBROOMSSWEEPCLEAN'
+plaintext = 'TR'
+p = plaintext
 for x=1:length(plaintext)
     if(plaintext(x) == 'J')
         plaintext(x) = 'I'
@@ -158,3 +159,114 @@ for x=1:(length(plaintext)/2)
 end
 
 disp(char(playfair))
+
+
+%% membuat bigram dekripsi
+part_decrypt = []
+flag = 1
+
+for x=1:(length(playfair)/2)
+    for y=1:2
+        part_decrypt(x,y) = playfair(flag)
+        flag = flag + 1
+    end
+end
+char(part_decrypt)
+
+%% proses dekripsi
+decrypt_plaintext = []
+
+% pencarian kolom
+flag = 1
+flag_part = 1
+for x=1:(length(playfair)/2)
+    for y=1:1
+%         disp(char(part_decrypt((x,y)))
+%         disp(char(part_decrypt(x,y+1)))
+        [index_baris1 index_kolom1] = find(matrix_kunci == part_decrypt(x,y))
+        [index_baris2 index_kolom2] = find(matrix_kunci == part_decrypt(x,y+1))
+%         pencarian kolom (jika kolom sama)
+        if(index_kolom1 == index_kolom2)
+            disp('KOLOM')
+            bar1 = index_baris1
+            bar2 = index_baris2
+            col1 = index_kolom1
+            col2 = index_kolom2
+            
+            index_baris1 = bar1 - 1
+            index_baris2 = bar2 - 1
+            
+            if(index_baris1 < (1))
+                index_baris1 = 5
+            elseif(index_baris2 < (1))
+                index_baris2 = 5
+            end
+            
+%             SUSUN
+            decrypt_plaintext(flag) = matrix_kunci(index_baris1,index_kolom1)
+            decrypt_plaintext(flag+1) = matrix_kunci(index_baris2,index_kolom2)
+        
+%       pencarian baris (jika baris sama)
+        elseif(index_baris1 == index_baris2)
+            disp('BARIS')
+            bar1 = index_baris1
+            bar2 = index_baris2
+            col1 = index_kolom1
+            col2 = index_kolom2
+            
+            index_kolom1 = col1 - 1
+            index_kolom2 = col2 - 1
+            
+            if(index_kolom1 < (1))
+                index_kolom1 = 5
+            elseif(index_kolom2 < (1))
+                index_kolom2 = 5
+            end
+            
+%             SUSUN
+            decrypt_plaintext(flag) = matrix_kunci(index_baris1,index_kolom1)
+            decrypt_plaintext(flag+1) = matrix_kunci(index_baris2,index_kolom2)
+        else
+            
+%       pencarian jika tidak sama baris dan kolom
+            disp('CROSS')
+            bar1 = index_baris1
+            bar2 = index_baris2
+            col1 = index_kolom1
+            col2 = index_kolom2
+            index_baris1 = bar2
+            index_kolom1 = col1
+            index_baris2 = bar1
+            index_kolom2 = col2
+            
+%             SUSUN
+        decrypt_plaintext(flag) = matrix_kunci(index_baris2,index_kolom2)
+        decrypt_plaintext(flag+1) = matrix_kunci(index_baris1,index_kolom1)
+        end
+        
+%         penyusunan playfair
+%         decrypt_plaintext(flag) = matrix_kunci(index_baris2,index_kolom2)
+%         decrypt_plaintext(flag+1) = matrix_kunci(index_baris1,index_kolom1)
+        
+    end
+    flag = flag + 2
+end
+
+% menggabungkan part menjadi string
+plain = []
+flag = 1
+flag_part = 1
+for x=1:(length(playfair)/2)
+    for y=1:1
+        plain(flag) = part(x,y)
+        plain(flag+1) = part(x,y+1)
+    end
+    flag = flag + 2
+end
+% cetak
+fprintf('Kunci \t\t\t\t\t\t\t\t\t: %s',kunci)
+fprintf('\nPlaintext \t\t\t\t\t\t\t\t: %s', p)
+fprintf('\nPlaintext Setelah Dibuat Bigram \t\t: %s', plain)
+fprintf('\nPlayfair Ciphertext Setelah Encrypt \t: %s',char(playfair))
+fprintf('\nPlaintext Setelah Decrypt \t\t\t\t: %s',char(decrypt_plaintext))
+fprintf('\n')
