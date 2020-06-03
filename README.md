@@ -15,7 +15,7 @@ This Repository Contains :
     - Vigenere Cipher
 6. Data Encryption Standard 64-bit (Fixed) (Encrypt & Decrypt)
 
-plainText used "MUHAMADRIZKYFAJARFEBRIAN^-^Ditambahin_bEn_tAMBAh_PanjanG_daN_AngelFC-77-74-B3-34-DB114.125.9.97"
+plainText used "MUHAMADRIZKYFAJARFEBRIAN^-^Ditambahin_bEn_tAMBAh_PanjanG_daN_AngelFC-77-78-83-X4-ZB114.125.9.97"
 means [FULL NAME]+[DUMMY SYMBOL CHARACTER]
 
 key variated every algorithm
