@@ -14,6 +14,7 @@ This Repository Contains :
     - Caesar Cipher (Fixed) (Encrypt & Decrypt)
     - Vigenere Cipher
 6. Data Encryption Standard 64-bit (Fixed) (Encrypt & Decrypt)
+7. RSA Encryption (Fixed) (Encrypt & Decrypt)
 
 plainText used "MUHAMADRIZKYFAJARFEBRIAN^-^Ditambahin_bEn_tAMBAh_PanjanG_daN_AngelFC-77-78-83-X4-ZB114.125.9.97"
 means [FULL NAME]+[DUMMY SYMBOL CHARACTER]
