@@ -1,5 +1,5 @@
 KRIPTOGRAFI/CRYPTOGRAPHY
-Cryptography with several traditional algorithm, 
+Cryptography with several traditional and modern algorithm, 
 
 This Repository Contains :
 1. Transposition Cipher
