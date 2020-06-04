@@ -1,0 +1,97 @@
+% http://www.mathaware.org/mam/06/Kaliski.pdf
+% regarding the negative 'd' parameter: https://www2.informatik.uni-hamburg.de/wsv/teaching/sonstiges/EwA-Folien/Sohst-Paper.pdf
+
+clc
+clear
+close all
+
+% harus 15 karakter
+Text            = 'UDINUS';
+
+% merubah ke 0 - 26
+Message         = int32(Text)- 64;
+% Message         = int32(Text);
+
+% merubah spasi menjadi 0
+if(Message(Message == -32))
+    Message(Message == -32) = 0;
+end
+
+% mengelompokkan jadi 3-3
+% m = ones(1,length(Message)/3)
+% temp = 1;
+% for a=1:5
+%     hasil = 0
+%     power = 2
+%     for b=1:3
+% %         disp(Message(temp))
+% %         fprintf('%s x %s^%s = %s',num2str(Message(temp)),num2str(27),num2str(power),num2str(hasil))
+%         hasil = hasil + (Message(temp) * (27 ^ power))
+%         power = power - 1
+%         temp = temp + 1;
+%     end
+%     m(a) = hasil
+% end
+
+% mengelompokkan ASCII menjadi 3-3
+temp = 1,
+for a=1:length(Text)
+    for b=1:3
+        asci(
+    end
+end
+
+
+
+
+fprintf('-Input-\n')
+fprintf('Original message:       ''%s''\n', Text)
+fprintf('Integer representation: %s\n', num2str(Message))
+
+%% Generate Key Pair
+
+[Modulus, PublicExponent, PrivateExponent] = GenerateKeyPair;
+
+fprintf('\n-Key Pair-\n')
+fprintf('Modulus:                '), fprintf('%5d\n', Modulus)
+fprintf('Public Exponent:        '), fprintf('%5d\n', PublicExponent)
+fprintf('Private Exponent:       '), fprintf('%5d\n', PrivateExponent)
+
+%% Encrypt / Decrypt
+
+Ciphertext      = Encrypt(Modulus, PublicExponent, m);
+RestoredMessage	= Decrypt(Modulus, PrivateExponent, Ciphertext);
+
+fprintf('\n-Encryption-\n')
+fprintf('Ciphertext:             %s [ %s ]\n', num2str(Ciphertext), char(Ciphertext))
+% fprintf('Restored Message:       ''%s''\n', char(RestoredMessage))
+
+% ekstrak jadi 1 char
+temp = 1;
+for a=1:5
+    sisa = RestoredMessage(a);
+    power = 2;
+    for b =1:3
+        pt(temp)= floor(sisa/ (27 ^ power));
+%         fprintf('%s / (27 ^ %s) = %s',num2str(sisa), num2str(power), num2str(pt));
+        sisa = mod(sisa,(27 ^ power));
+        power = power - 1;
+        temp = temp + 1;
+    end
+end
+
+pt = pt + 64;
+if (pt(pt == 64))
+    pt(pt == 64) = 32;
+end
+
+fprintf('Pesan Setelah Dekripsi:       %s\n', char(pt));
+
+% %% Sign / Validate
+% 
+% Signature       = Sign(Modulus, PrivateExponent, Message);
+% IsVerified      = Verify(Modulus, PublicExponent, Message, Signature);
+% 
+% fprintf('\n-Signing-\n')
+% fprintf('Signature:              %s [ %s ]\n', num2str(Signature), char(Signature))
+% fprintf('Is Verified:            %d\n', IsVerified)
