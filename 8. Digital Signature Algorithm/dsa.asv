@@ -1,0 +1,25 @@
+p = 59419;
+q = 0;
+h = 0;
+g = 0;
+
+% cari q
+for x=1:p-1
+    if mod(sym(p-1), sym(x)) == 0
+        q = x;
+        disp(q);
+    end
+end
+%% pilih q
+fprintf('Pilih nilai q: ')
+
+%% cari h
+for x=1:p-1
+    if mod(sym(x^((p-1)/q)),sym(p)) > 1
+        h = x;
+        disp(h)
+    end
+end
+%% pilih h dan menghitung
+fprintf('Pilih nilai h: ')
+
