@@ -57,7 +57,7 @@ end
 %menampilkan hasil dari decoded_text
 fprintf('Pesan : %s\n',decoded_text);
 
-%simpan ke dalam file
+
 id = fopen('decodedMessage.txt','w');
 fwrite(id,decoded_text);
 fclose(id);
