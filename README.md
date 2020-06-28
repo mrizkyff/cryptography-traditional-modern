@@ -15,6 +15,8 @@ This Repository Contains :
     - Vigenere Cipher
 6. Data Encryption Standard 64-bit (Fixed) (Encrypt & Decrypt)
 7. RSA Encryption (Fixed) (Encrypt & Decrypt)
+8. Digital Signature with RSA (Encrypt & Decrypt) (DSA included)
+9. Steganography (LSB) (Encode & Decode)
 
 plainText used "MUHAMADRIZKYFAJARFEBRIAN^-^Ditambahin_bEn_tAMBAh_PanjanG_daN_AngelFC-77-78-83-X4-ZB114.125.9.97"
 means [FULL NAME]+[DUMMY SYMBOL CHARACTER]
